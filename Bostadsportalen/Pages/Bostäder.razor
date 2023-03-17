@@ -1,6 +1,9 @@
-﻿@page "/counter"
+﻿@page "/bostäder"
+@inject HttpClient Http
 
-<PageTitle>Counter</PageTitle>
+@using Bostadsportalen.Shared
+
+<PageTitle>Bostäder</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">Counter</MudText>
 <MudText Class="mb-4">Current count: @currentCount</MudText>
