@@ -4,7 +4,9 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
+
 <MudLayout>
+    <link rel="icon" href="sample-databf-logo-2.svg">
     <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudSpacer />
@@ -22,8 +24,17 @@
         </MudContainer>
     </MudMainContent>
     <MudAppBar Elevation="1" Style="top: auto; bottom: 0">
+        <a href="https://www.facebook.com/bostadsformedlingen/" target="_blank">
+            <MudImage Src="images/Facebook_icon.png" Alt="Facebook icon" Height="25" Width="25" Elevation="25" Class="rounded-lg" />
+        </a>
         <a href="https://se.linkedin.com/company/stockholms-stads-bostadsf-rmedling-ab" target="_blank">
-            <MudImage Src="LinkedIn_icon.png" Alt="LinkedIn icon" Height="25" Width="25" Elevation="25" Class="rounded-lg"/>
+            <MudImage Src="images/LinkedIn_icon.png" Alt="LinkedIn icon" Height="25" Width="25" Elevation="25" Class="rounded-lg" />
+        </a>
+        <a href="https://www.instagram.com/boistockholm" target="_blank">
+            <MudImage Src="images/Instagram_icon.png" Alt="Instagram icon" Height="25" Width="25" Elevation="25" Class="rounded-lg" />
+        </a>
+        <a href="mailto: lagenhet@bostad.stockholm.se?subject=Ang. Bostadsportalen">
+            <MudImage Src="images/email_icon.png" Alt="Email icon" Height="25" Width="25" Elevation="25" Class="rounded-lg" />
         </a>
     </MudAppBar>
 </MudLayout>
