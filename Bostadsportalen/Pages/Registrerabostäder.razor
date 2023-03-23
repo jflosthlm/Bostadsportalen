@@ -1,8 +1,77 @@
 ﻿@page "/registrerabostäder"
 
-<h3>Registrera bostäder</h3>
+<h3>Registrera bostad</h3>
 
-
+<MudItem xs="12" sm="6" md="4" my="4">
+<MudTextField @bind-Value="TextValue" Label="Lägenhetsnummer" Variant="Variant.Text"></MudTextField>
+</MudItem>
+<MudGrid>
+    <MudItem xs="12" md="1">
+        <MudRadioGroup @bind-SelectedOption="@Placement">
+            <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Top)">Succession</MudRadio>
+            <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Bottom)">Nyproduktion</MudRadio>
+            </MudRadioGroup>
+        </MudItem>
+        </MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudAutocomplete T="string" Label="Gatuadress" @bind-Value="gatuadress" SearchFunc="@Search1"
+                         ResetValueOnEmptyText="@resetValueOnEmptyText"
+                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+    </MudItem>
+    </MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudAutocomplete T="string" Label="Postnummer" @bind-Value="postnummer" SearchFunc="@Search2"
+                         ResetValueOnEmptyText="@resetValueOnEmptyText"
+                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudAutocomplete T="string" Label="Postort" @bind-Value="postort" SearchFunc="@Search3"
+                         ResetValueOnEmptyText="@resetValueOnEmptyText"
+                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+    </MudItem>
+</MudGrid>
 @code {
+    public string TextValue = "";
+    public Placement Placement { get; set; } = Placement.Right;
+    private bool resetValueOnEmptyText;
+    private bool coerceText;
+    private bool coerceValue;
+    private string gatuadress;
+    private string postnummer;
+    private string postort;
 
+   
+
+    private string[] gatuadresser =
+    { "Ringvägen","Sockenvägen", "Husabyvägen" };
+
+        private async Task<IEnumerable<string>> Search1(string gatuadress)
+        {
+        if (string.IsNullOrEmpty(gatuadress))
+            return gatuadresser;
+        return gatuadresser.Where(x => x.Contains(gatuadress, StringComparison.InvariantCultureIgnoreCase));
+        }
+        
+    private string[] postnummer1 =
+    { "11860","13242", "12650" };
+
+    private async Task<IEnumerable<string>> Search2(string postnummer)
+    {
+        if (string.IsNullOrEmpty(postnummer))
+            return postnummer1;
+        return postnummer1.Where(x => x.Contains(postnummer, StringComparison.InvariantCultureIgnoreCase));
+    }
+    private string[] postorter =
+    { "Stockholm","Nacka", "Hägersten" };
+
+    private async Task<IEnumerable<string>> Search3(string gatuadress)
+    {
+        if (string.IsNullOrEmpty(postort))
+            return postorter;
+        return postorter.Where(x => x.Contains(postort, StringComparison.InvariantCultureIgnoreCase));
+    }
 }

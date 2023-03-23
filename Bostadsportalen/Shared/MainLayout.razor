@@ -14,12 +14,13 @@
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
         <MudDrawerHeader>
+            <MudImage Src="images/bf-logo-2.svg" Alt="Logga" Height="25" Width="25" Elevation="25" Class="rounded-lg" />
             <MudText Typo="Typo.h6">Bostadsportalen</MudText>
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-4 pt-1">
             @Body
         </MudContainer>
     </MudMainContent>
