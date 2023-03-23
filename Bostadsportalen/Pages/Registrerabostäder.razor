@@ -34,6 +34,48 @@
                          CoerceText="@coerceText" CoerceValue="@coerceValue" />
     </MudItem>
 </MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudSelect Margin="Margin.Dense" T="string" Label="Bostadstyp" Variant="Variant.Text">
+            <MudSelectItem Value="@("Hyresrätt")" />
+            <MudSelectItem Value="@("Korttidskontrakt")" />
+            <MudSelectItem Value="@("Ungdomsbostad")" />
+        </MudSelect>
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudDatePicker Label="Inflyttningsdatum" ShowWeekNumbers="true" Editable="true" @bind-Date="inflyttningsdag" Placeholder="Välj datum" />
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudDatePicker Label="Möjlighet till tidigare inflyttning från" ShowWeekNumbers="true" Editable="true" Placeholder="Välj datum" />
+    </MudItem>
+</MudGrid>
+
+@*VISNING*@
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudDatePicker Label="Visningsdatum" ShowWeekNumbers="true" Editable="true" @bind-Date="visningsdag" Placeholder="Välj datum" />
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" md="1">
+        <MudRadioGroup @bind-SelectedOption="@Placement">
+            <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Left)">Fysisk visning</MudRadio>
+            <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Right)">Digital visning</MudRadio>
+        </MudRadioGroup>
+    </MudItem>
+</MudGrid>
+
+@code {
+    DateTime? inflyttningsdag = DateTime.Today;
+    DateTime? visningsdag = DateTime.Today.AddDays(30);
+}
+
+
+
 @code {
     public string TextValue = "";
     public Placement Placement { get; set; } = Placement.Right;
@@ -44,6 +86,7 @@
     private string postnummer;
     private string postort;
 
+    
    
 
     private string[] gatuadresser =
