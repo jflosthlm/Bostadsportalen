@@ -3,23 +3,29 @@
 <h3>Registrera bostad</h3>
 
 <MudItem xs="12" sm="6" md="4" my="4">
-<MudTextField @bind-Value="TextValue" Label="Lägenhetsnummer" Variant="Variant.Text"></MudTextField>
+    <MudTextField @bind-Value="lägenhetsnummerTextValue" Label="Lägenhetsnummer" Variant="Variant.Text"></MudTextField>
 </MudItem>
 <MudGrid>
-    <MudItem xs="12" md="1">
+        <MudItem xs="12" md="4">
+        <MudToggleIconButton @bind-Toggled="@ÄrSuccession"
+                             Icon="@Icons.Material.Filled.Home" Color="@Color.Success" Title="Nyproduktion"
+                             ToggledIcon="@Icons.Material.Filled.Home" ToggledColor="@Color.Primary" ToggledTitle="Succession" />
+        <span>Bostadstyp: @(ÄrSuccession ? " Succession" : " Nyproduktion")</span>
+    </MudItem>
+@*    <MudItem xs="12" md="1">
         <MudRadioGroup @bind-SelectedOption="@Placement">
             <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Top)">Succession</MudRadio>
             <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Bottom)">Nyproduktion</MudRadio>
-            </MudRadioGroup>
-        </MudItem>
-        </MudGrid>
+        </MudRadioGroup>
+    </MudItem>*@
+</MudGrid>
 <MudGrid>
     <MudItem xs="12" sm="6" md="4">
         <MudAutocomplete T="string" Label="Gatuadress" @bind-Value="gatuadress" SearchFunc="@Search1"
                          ResetValueOnEmptyText="@resetValueOnEmptyText"
                          CoerceText="@coerceText" CoerceValue="@coerceValue" />
     </MudItem>
-    </MudGrid>
+</MudGrid>
 <MudGrid>
     <MudItem xs="12" sm="6" md="4">
         <MudAutocomplete T="string" Label="Postnummer" @bind-Value="postnummer" SearchFunc="@Search2"
@@ -43,6 +49,11 @@
         </MudSelect>
     </MudItem>
 </MudGrid>
+
+<br />
+<br />
+<h3>Inflyttning</h3>
+@*INFLYTTNING*@
 <MudGrid>
     <MudItem xs="12" sm="6" md="4">
         <MudDatePicker Label="Inflyttningsdatum" ShowWeekNumbers="true" Editable="true" @bind-Date="inflyttningsdag" Placeholder="Välj datum" />
@@ -54,37 +65,108 @@
     </MudItem>
 </MudGrid>
 
+<br />
+<br />
+<h3>Visning</h3>
 @*VISNING*@
 <MudGrid>
-    <MudItem xs="12" sm="6" md="4">
-        <MudDatePicker Label="Visningsdatum" ShowWeekNumbers="true" Editable="true" @bind-Date="visningsdag" Placeholder="Välj datum" />
-    </MudItem>
-</MudGrid>
-<MudGrid>
-    <MudItem xs="12" md="1">
+    <MudItem xs="12" md="4">
         <MudRadioGroup @bind-SelectedOption="@Placement">
             <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Left)">Fysisk visning</MudRadio>
             <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Right)">Digital visning</MudRadio>
         </MudRadioGroup>
     </MudItem>
 </MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="2">
+        <MudDatePicker Label="Visningsdatum" ShowWeekNumbers="true" Editable="true" @bind-Date="visningsdag" Placeholder="Välj datum" />
+    </MudItem>
+    <MudItem xs="12" sm="6" md="2">
+    <MudTextField T="string" Label="Tid" InputType="InputType.Time" />
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" md="4">
+        <MudToggleIconButton @bind-Toggled="@VisasAvHyresvärd"
+                             Icon="@Icons.Material.Filled.Person" Color="@Color.Error" Title="Byt"
+                             ToggledIcon="@Icons.Material.Filled.Verified" ToggledColor="@Color.Success" ToggledTitle="Byt" />
+        <span>Visas av @(VisasAvHyresvärd ? " representant från hyresvärden" : " nuvarande hyresgäst")</span>
+    </MudItem>
+</MudGrid>
+
+<br />
+<br />
+<h3>Balkong</h3>
+@*BALKONG*@
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@Balkong_Switch" Label="Balkong" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@InglasadBalkong_Switch" Label="Inglasad Balkong" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@FranskBalkong_Switch" Label="Fransk Balkong" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@Terass_Switch" Label="Terass" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@Altan_Switch" Label="Altan" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@Uteplats_Switch" Label="Uteplats" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@DubblaBalkonger_Switch" Label="Dubbla Balkonger" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@Loggia_Switch" Label="Loggia" Color="Color.Primary" />
+</MudItem>
+<MudItem xs="12" sm="6" md="2">
+    <MudSwitch @bind-Checked="@EjBalkong_Switch" Label="Ej Balkong" Color="Color.Secondary" />
+</MudItem>
+
+
+
+
+
+<br />
+<br />
+@*ÖVRIG INFO*@
+<MudGrid>
+    <MudItem xs="12" sm="6" md="4">
+        <MudTextField T="string" Label="Övrig information" Variant="Variant.Outlined" Text="@övrigInfo" Lines="3" />
+    </MudItem>
+</MudGrid>
+
+
+
+
 
 @code {
-    DateTime? inflyttningsdag = DateTime.Today;
-    DateTime? visningsdag = DateTime.Today.AddDays(30);
-}
-
-
-
-@code {
-    public string TextValue = "";
+    public string lägenhetsnummerTextValue = "";
     public Placement Placement { get; set; } = Placement.Right;
     private bool resetValueOnEmptyText;
     private bool coerceText;
     private bool coerceValue;
-    private string gatuadress;
-    private string postnummer;
-    private string postort;
+    private string gatuadress = "";
+    private string postnummer = "";
+    private string postort = "";
+    string övrigInfo = "";
+    public bool VisasAvHyresvärd { get; set; } = true;
+    public bool ÄrSuccession { get; set; } = true;
+
+
+
+    public bool Balkong_Switch { get; set; } = false;
+    public bool InglasadBalkong_Switch { get; set; } = false;
+    public bool FranskBalkong_Switch { get; set; } = false;
+    public bool Terass_Switch { get; set; } = false;
+    public bool Altan_Switch { get; set; } = false;
+    public bool Uteplats_Switch { get; set; } = false;
+    public bool DubblaBalkonger_Switch { get; set; } = false;
+    public bool Loggia_Switch { get; set; } = false;
+    public bool EjBalkong_Switch { get; set; } = false;
 
     
    
@@ -117,4 +199,7 @@
             return postorter;
         return postorter.Where(x => x.Contains(postort, StringComparison.InvariantCultureIgnoreCase));
     }
+
+    DateTime? inflyttningsdag = DateTime.Today;
+    DateTime? visningsdag = DateTime.Today.AddDays(30);
 }
