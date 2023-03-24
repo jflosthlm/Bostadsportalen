@@ -71,11 +71,17 @@
 @*VISNING*@
 <MudGrid>
     <MudItem xs="12" md="4">
+        <MudToggleIconButton @bind-Toggled="@FysiskVisning"
+                             Icon="@Icons.Material.Filled.DirectionsWalk" Color="@Color.Primary" Title="Fysisk"
+                             ToggledIcon="@Icons.Material.Filled.Preview" ToggledColor="@Color.Primary" ToggledTitle="Digital" />
+        <span>@(FysiskVisning ? "Digital" : "Fysisk") visning</span>
+    </MudItem>
+@*    <MudItem xs="12" md="4">
         <MudRadioGroup @bind-SelectedOption="@Placement">
             <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Left)">Fysisk visning</MudRadio>
             <MudRadio Color="Color.Primary" Size="Size.Small" Option="@(Placement.Right)">Digital visning</MudRadio>
         </MudRadioGroup>
-    </MudItem>
+    </MudItem>*@
 </MudGrid>
 <MudGrid>
     <MudItem xs="12" sm="6" md="2">
@@ -155,6 +161,7 @@
     string övrigInfo = "";
     public bool VisasAvHyresvärd { get; set; } = true;
     public bool ÄrSuccession { get; set; } = true;
+    public bool FysiskVisning { get; set; } = true;
 
 
 
