@@ -25,6 +25,11 @@
                          ResetValueOnEmptyText="@resetValueOnEmptyText"
                          CoerceText="@coerceText" CoerceValue="@coerceValue" />
     </MudItem>
+    <MudItem xs="12" sm="6" md="2">
+        <MudAutocomplete T="string" Label="Nummer" @bind-Value="gatunummer" SearchFunc="@SearchGatunummer"
+                         ResetValueOnEmptyText="@resetValueOnEmptyText"
+                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+    </MudItem>
 </MudGrid>
 <MudGrid>
     <MudItem xs="12" sm="6" md="4">
@@ -158,6 +163,7 @@
     private string gatuadress = "";
     private string postnummer = "";
     private string postort = "";
+    private string gatunummer = "";
     string övrigInfo = "";
     public bool VisasAvHyresvärd { get; set; } = true;
     public bool ÄrSuccession { get; set; } = true;
@@ -175,19 +181,29 @@
     public bool Loggia_Switch { get; set; } = false;
     public bool EjBalkong_Switch { get; set; } = false;
 
-    
-   
+
+
 
     private string[] gatuadresser =
     { "Ringvägen","Sockenvägen", "Husabyvägen" };
 
-        private async Task<IEnumerable<string>> Search1(string gatuadress)
-        {
+    private async Task<IEnumerable<string>> Search1(string gatuadress)
+    {
         if (string.IsNullOrEmpty(gatuadress))
             return gatuadresser;
         return gatuadresser.Where(x => x.Contains(gatuadress, StringComparison.InvariantCultureIgnoreCase));
-        }
-        
+    }
+
+    private string[] gatunummerList =
+    { "1", "2", "3", "3A", "3B"};
+
+    private async Task<IEnumerable<string>> SearchGatunummer(string gatunummer)
+    {
+        if (string.IsNullOrEmpty(gatunummer))
+            return gatunummerList;
+        return gatunummerList.Where(x => x.Contains(gatunummer, StringComparison.InvariantCultureIgnoreCase));
+    }
+
     private string[] postnummer1 =
     { "11860","13242", "12650" };
 
