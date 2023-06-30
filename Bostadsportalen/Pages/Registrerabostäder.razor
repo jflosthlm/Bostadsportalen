@@ -89,15 +89,15 @@
     </MudItem>*@
 </MudGrid>
 <MudGrid>
-    <MudItem xs="12" sm="6" md="2">
+    <MudItem xs="12" sm="6" md="2" hidden="@(FysiskVisning)">
         <MudDatePicker Label="Visningsdatum" ShowWeekNumbers="true" Editable="true" @bind-Date="visningsdag" Placeholder="Välj datum" />
     </MudItem>
-    <MudItem xs="12" sm="6" md="2">
-    <MudTextField T="string" Label="Tid" InputType="InputType.Time" />
+    <MudItem xs="12" sm="6" md="2" hidden="@(FysiskVisning)">
+        <MudTextField T="string" Label="Tid" InputType="InputType.Time" />
     </MudItem>
 </MudGrid>
 <MudGrid>
-    <MudItem xs="12" md="4">
+    <MudItem xs="12" md="4" hidden="@(FysiskVisning)">
         <MudToggleIconButton @bind-Toggled="@VisasAvHyresvärd"
                              Icon="@Icons.Material.Filled.Person" Color="@Color.Error" Title="Byt"
                              ToggledIcon="@Icons.Material.Filled.Verified" ToggledColor="@Color.Success" ToggledTitle="Byt" />
@@ -223,6 +223,6 @@
         return postorter.Where(x => x.Contains(postort, StringComparison.InvariantCultureIgnoreCase));
     }
 
-    DateTime? inflyttningsdag = DateTime.Today;
-    DateTime? visningsdag = DateTime.Today.AddDays(30);
+    DateTime? inflyttningsdag = DateTime.Today.AddDays(30);
+    DateTime? visningsdag = DateTime.Today.AddDays(10);
 }
