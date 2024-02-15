@@ -1,6 +1,22 @@
-﻿<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Hem</MudNavLink>
-    <MudNavLink Href="bostäder" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Bostäder</MudNavLink>
-    <MudNavLink Href="användare" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Användare</MudNavLink>
-    <MudNavLink Href="hjälp" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Hjälp</MudNavLink>
-</MudNavMenu>
+﻿
+
+<link href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" rel="stylesheet">
+
+
+<MudPaper Width="250px" Class="d-inline-flex py-3" Elevation="0">
+    <MudNavMenu Class="mud-width-full">
+        
+        <MudDivider Class="my-2" />
+        <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Hem</MudNavLink>
+        <MudNavGroup Title="Bostäder" Icon="@Icons.Material.Filled.Business" Expanded="false">
+            <MudNavLink Href="/aktuellabostäder" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Business">Aktuella bostäder</MudNavLink>
+            <MudNavLink Href="/registrerabostäder" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Registrera bostad</MudNavLink>
+            <MudNavLink Href="/bostäder" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.House">Alla bostäder</MudNavLink>
+        </MudNavGroup>
+        <MudNavGroup Title="Användare" Icon="@Icons.Material.Filled.People" Expanded="false">
+            <MudNavLink Href="/användare" Icon="@Icons.Material.Filled.People">Se alla</MudNavLink>
+            <MudNavLink Href="/läggtillanvändare" Icon="@Icons.Material.Filled.Add">Lägg till användare</MudNavLink>
+        </MudNavGroup>
+        <MudNavLink Href="hjälp" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Help">Hjälp</MudNavLink>
+    </MudNavMenu>
+</MudPaper>

@@ -1,52 +1,102 @@
 ﻿@page "/användare"
 @inject HttpClient Http
 @using Bostadsportalen.Shared
-
+@using System.Net.Http.Json
 <PageTitle>Användare</PageTitle>
 
+
 <MudText Typo="Typo.h3" GutterBottom="true">Användare</MudText>
-<MudText Class="mb-8">Nedan visas en lista över användare kopplat till XXXXXX.</MudText>
-@if (forecasts == null)
-{
-    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
-}
-else
-{
-    <MudTable Items="forecasts" Hover="true" SortLabel="Sort By" Elevation="0">
-        <HeaderContent>
-            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<WeatherForecast, object>(x=>x.Date)">Date</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<WeatherForecast, object>(x=>x.TemperatureC)">Temp. (C)</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<WeatherForecast, object>(x=>x.TemperatureF)">Temp. (F)</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<WeatherForecast, object>(x=>x.Summary!)">Summary</MudTableSortLabel></MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="Date">@context.Date</MudTd>
-            <MudTd DataLabel="Temp. (C)">@context.TemperatureC</MudTd>
-            <MudTd DataLabel="Temp. (F)">@context.TemperatureF</MudTd>
-            <MudTd DataLabel="Summary">@context.Summary</MudTd>
-        </RowTemplate>
-        <PagerContent>
-            <MudTablePager PageSizeOptions="new int[]{50, 100}" />
-        </PagerContent>
-    </MudTable>
-}
+<MudText Class="mb-8">Nedan visas en lista över användare kopplade till TestLani Fastigheter11.</MudText>
 
 
+
+<div class="mud-table mud-xs-table mud-table-dense mud-table-sticky-header mud-elevation-1">
+    <div class="mud-toolbar mud-toolbar-gutters mud-table-toolbar">
+        <div class="mud-chipset"><div tabindex="0" class="mud-chip mud-chip-text mud-chip-size-medium mud-chip-color-primary mud-clickable mud-ripple"><span class="mud-chip-content">Administratör</span></div><div tabindex="0" class="mud-chip mud-chip-text mud-chip-size-medium mud-chip-color-primary mud-clickable mud-ripple"><span class="mud-chip-content">Uthyrare</span></div><div tabindex="0" class="mud-chip mud-chip-text mud-chip-size-medium mud-chip-color-primary mud-clickable mud-ripple"><span class="mud-chip-content">Uthyrare sekretess</span></div><div tabindex="0" class="mud-chip mud-chip-text mud-chip-size-medium mud-chip-color-primary mud-clickable mud-ripple"><span class="mud-chip-content">Allmän</span></div></div>
+        <div class="flex-grow-1"></div>
+        <div class="mud-input-control mud-input-control-margin-dense mud-input-input-control"><div class="mud-input-control-input-container"><div class="mud-input mud-input-text mud-input-adorned-start mud-input-margin-dense mud-input-underline mud-shrink"><div class="mud-input-adornment mud-input-adornment-start"><svg aria-label="Icon" tabindex="-1" class="mud-icon-root mud-icon-default mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><input class="mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-start mud-input-root-margin-dense" type="text" placeholder="Filtrera" inputmode="text" maxlength="524288" aria-invalid="false" _bl_7be02ba8-6b50-4d02-89f1-804adffdd55d=""><div class="mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-start mud-input-root-margin-dense" style="display:none" tabindex="-1" _bl_eb0529b1-01da-4d78-9c52-f68e82043c76=""></div></div></div></div>
+    </div><div class="mud-table-container" style="height:350px; ">
+        <table class="mud-table-root">
+            <thead class="mud-table-head">
+
+                <tr class="mud-table-row">
+
+                    <th scope="col" class="mud-table-cell">Namn</th>
+
+                    <th scope="col" class="mud-table-cell">Personnummer</th>
+
+                    <th scope="col" class="mud-table-cell">Behörigheter</th>
+
+                    <th scope="col" class="mud-table-cell">Åtgärder</th>
+                </tr>
+            </thead>
+            <tbody class="mud-table-body">
+
+                <tr class="mud-table-row" style="">
+
+                    <td data-label="Namn" class="mud-table-cell">Adam Fagerberg</td>
+
+                    <td data-label="Personnummer" class="mud-table-cell">780405-9632</td>
+
+                    <td data-label="Behörigheter" class="mud-table-cell"></td>
+
+                    <td data-label="Åtgärder" class="mud-table-cell">
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_2c0b033f-bf85-4769-b7dd-b107b3a08254=""><span class="mud-button-label">Ta bort</span></button>
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_3e1f78de-46a6-425c-b8d3-24d494cce65b=""><span class="mud-button-label">Ändra</span></button>
+                    </td>
+                </tr>
+                <tr class="mud-table-row" style="">
+
+                    <td data-label="Namn" class="mud-table-cell">Kersin Björk</td>
+
+                    <td data-label="Personnummer" class="mud-table-cell">880203-9652</td>
+                    <td data-label="Behörigheter" class="mud-table-cell">
+                        <div tabindex="0" class="mud-chip mud-chip-text mud-chip-size-small mud-chip-color-primary"><span class="mud-chip-content">Uthyrare</span></div>
+                    </td>
+
+                    <td data-label="Åtgärder" class="mud-table-cell">
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_2986f199-da0d-4b01-bd58-6aecccdc6b42=""><span class="mud-button-label">Ta bort</span></button>
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_3e1f78de-46a6-425c-b8d3-24d494cce65b=""><span class="mud-button-label">Ändra</span></button>
+                    </td>
+                </tr>
+
+                <tr class="mud-table-row" style="">
+
+                    <td data-label="Namn" class="mud-table-cell">Agnes Häggströn</td>
+
+                    <td data-label="Personnummer" class="mud-table-cell">991105-9852</td>
+
+                    <td data-label="Behörigheter" class="mud-table-cell"></td>
+
+                    <td data-label="Åtgärder" class="mud-table-cell">
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_3e1f78de-46a6-425c-b8d3-24d494cce65b=""><span class="mud-button-label">Ta bort</span></button>
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_3e1f78de-46a6-425c-b8d3-24d494cce65b=""><span class="mud-button-label">Ändra</span></button>
+                    </td>
+                </tr>
+                <tr class="mud-table-row" style="">
+
+                    <td data-label="Namn" class="mud-table-cell">Alexander Svensson</td>
+
+                    <td data-label="Personnummer" class="mud-table-cell">850402-2365</td>
+
+                    <td data-label="Behörigheter" class="mud-table-cell"></td>
+
+                    <td data-label="Åtgärder" class="mud-table-cell">
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_68859c3f-be8e-49ee-af2e-e844446dd351=""><span class="mud-button-label">Ta bort</span></button>
+                        <button type="button" class="mud-button-root mud-button mud-button-text mud-button-text-primary mud-button-text-size-small mud-ripple" _bl_3e1f78de-46a6-425c-b8d3-24d494cce65b=""><span class="mud-button-label">Ändra</span></button>
+                    </td>
+                </tr>
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
 @code {
-    private WeatherForecast[]? forecasts;
 
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
-    }
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string? Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
 }
+
+
+
